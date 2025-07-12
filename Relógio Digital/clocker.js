@@ -4,23 +4,33 @@ const minutos = document.getElementById("minutes");
 const segundosEl = document.getElementById("seconds");
 
 button.addEventListener("click", () => {
-    let input_sec = parseInt(document.getElementById("input_segundos").value); // Pegando o valor no clique
-    
-    if (isNaN(input_sec) || input_sec < 0 ) {
+    let input_sec = parseInt(document.getElementById("input_segundos").value);
+
+    if (isNaN(input_sec) || input_sec < 0) {
         alert("Digite um número válido!");
         return;
     }
-    if (input_sec >=60){
-        input_sec = 
-    }
-    segundosEl.textContent = input_sec; // Atualiza o HTML com o valor inicial
-    
-    const intervalo = setInterval(() => {
-        input_sec--; // Diminui o número
-        segundosEl.textContent = input_sec; // Atualiza o HTML
 
-        if (input_sec <= 0) {
-            clearInterval(intervalo); // Para quando chegar a zero
+    let totalSec = input_sec;
+
+    function atualizarRelogio(segundosRestantes) {
+        const h = Math.floor(segundosRestantes / 3600);
+        const m = Math.floor((segundosRestantes % 3600) / 60);
+        const s = segundosRestantes % 60;
+
+        horas.textContent = h.toString().padStart(2, "0");
+        minutos.textContent = m.toString().padStart(2, "0");
+        segundosEl.textContent = s.toString().padStart(2, "0");
+    }
+
+    atualizarRelogio(totalSec);
+
+    const intervalo = setInterval(() => {
+        totalSec--;
+        atualizarRelogio(totalSec);
+
+        if (totalSec <= 0) {
+            clearInterval(intervalo);
         }
     }, 1000);
 });
