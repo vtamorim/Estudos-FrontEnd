@@ -3,8 +3,8 @@ const Place = document.getElementById("place");
 const dados = document.getElementById("dados");
 const apikey = "67f2150649fc4ef8873145241252308";
 
-Send_button.addEventListener("click", async () => {
-
+Send_button.addEventListener("click", async (event) => {
+    event.preventDefault();
     const response = await fetch(`httpS://api.weatherapi.com/v1/current.json?key=${apikey}&q=${Place.value}`);
     const users = await response.json();
 

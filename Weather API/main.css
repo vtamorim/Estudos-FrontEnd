@@ -1,0 +1,68 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+header{
+    height:10vh;
+    width:100vw;
+    color: rgb(5, 255, 242);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:rgb(0, 117, 117);
+}
+main{
+    width:100vw;
+    height:90vh;
+    background-color:snow;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+h1{
+    text-align:center;
+    font-size:1.2rem;
+}
+form{
+    height:50vh;
+    width:60vw;
+    padding:1rem;
+    border-radius:5px;
+    color:white;
+    background-color:rgb(0, 117, 117);
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-areas:
+    "a a f"
+    "b b f"
+    "c c f"
+    "d . f"
+    "e . f" 
+    ;
+}
+
+h2{
+    grid-area:a;
+}
+
+p{
+    grid-area:c;
+}
+.place{
+    grid-area:d;
+    
+}
+.send_place{
+    grid-area:e;
+}
+ul{
+    list-style-type: none;
+    font-size:0.7rem;
+    grid-area:b;
+}
+#dados{
+    grid-area:f;
+    border: 1px solid snow;
+    padding:1rem;
+}

@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>Aplicação de Clima(SLA MERMAO)</h1>
-    <p>Você pode digitar um lugar de diversas formas:</p>
+    <header>
+        <h1>Aplicação de Clima</h1>
+    </header>
+    <main>
+    <form action="#">
+    <h2>Você pode digitar um lugar de diversas formas:</h2>
+    
     <ul>
         <li>Nome de uma cidade(Ex: London)</li>
         <li>CEP (Ex:59022)</li>
@@ -17,12 +22,13 @@
         <li>Nome de um Aeroporto (Ex:Heathrow,London)</li>
     </ul>
     <p>Obs:Nome de Cidades, Aeroportos e Países precisam ser digitados na língua inglesa</p>
-    <input id="place"type="text">
+    <input id="place"type="text"><br>
     <button id="send_place">Enviar</button>
 
     
-    <div id="dados"></div>
-
+    <div id="dados">Os dados vão aparecer aqui</div>
+    </form>
+    </main>
     <script src="weather.js"></script>
 </body>
 </html>
