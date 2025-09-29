@@ -1,0 +1,115 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+header{
+    background-color:snow;
+    width:100vw;
+    display:flex;
+    height:10vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    &  h1 { 
+        text-align:center;
+    }
+
+
+}
+header.dark{
+    background-color:darkslategrey;
+    color:snow;
+}
+
+main{
+    height:90vh;
+    width:100vw;
+    background-color: indigo;
+    display:flex;
+    justify-content:center;
+    & form{
+        width:30vw;
+        background-color:snow;
+        height:80vh;
+        align-self:center;
+        border-radius:10px;
+        padding:1rem;
+        box-sizing:border-box;
+        display: grid;
+        gap:1rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:0.5fr 0.5fr 1fr 1.5fr 4.5fr 0.7fr;
+        grid-template-areas:         
+        "a a"
+        "b b"
+        "c d"
+        "e e"
+        "f f"
+        "g g"
+        ;
+        & h2{
+            grid-area:a;
+        }
+        & hr{
+            background-color:black;
+            height:0.2vh;
+            grid-area:b;
+        }
+
+        & #nome{
+            grid-area:c;
+        }
+
+        & #email{
+            grid-area:d;
+        }
+        & #assunto{
+            grid-area:e;
+        }
+        & #mensagem{
+            grid-area:f;
+            padding:0.5rem;
+        }
+        & #send_button{
+            grid-area:g;
+            background-color:indigo;
+            color:snow;
+            border:none;
+
+        }
+        & #send_button:hover{
+            background-color:rgb(102, 3, 173);
+        }
+    }
+} 
+input{
+    padding-left:0.5rem;
+    box-sizing:border-box;
+}
+input.dark{
+    background-color:darkslategrey;
+    border:1px solid snow;
+    color:snow;
+
+    
+}
+input.dark::placeholder{
+    color:snow;
+}
+textarea.dark{
+    background-color:darkslategrey;
+    border:1px solid snow;
+    color:snow;
+}
+textarea.dark::placeholder{
+    color:snow
+}
+form.dark{
+    background-color:darkslategrey;
+
+
+    & h2{
+        color:snow;
+    }
+}

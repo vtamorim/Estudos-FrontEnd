@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário </title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>Formulário Simples</h1>
+        <button type="button" id="toggle_theme">
+            Alternar
+        </button>
+    </header>
+    <main>
+        <form action="#">
+            <h2>Envie uma Mensagem</h2>
+            <hr>
+            <input type="text" placeholder="Insira seu Nome" id="nome">
+
+            <input type="email" placeholder="Insira seu Email" id="email">
+            
+            <input type="text" placeholder="Assunto" id="assunto">
+
+            <textarea name="message" rows="4" cols="50" id="mensagem" placeholder="Mensagem">
+</textarea>
+
+            <button type="submit" id="send_button">Enviar Mensagem</button>
+        </form>
+    </main>
+
+
+    <script src="toggle.js"></script>
+</body>
+</html>
