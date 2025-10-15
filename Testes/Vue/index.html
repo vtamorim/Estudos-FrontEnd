@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            div {
+      margin: 10px;
+      padding: 10px;
+      border: solid black 1px;
+      display: inline-block;
+    }
+    .pinkBG {
+      background-color: lightpink;
+    }
+    </style>
+</head>
+<body>
+    <h1>Testando Vue</h1>
+    <p>é pq n sei n sei oq sla oq lá pq n sei oq lá</p>
+    <div id="app">
+       <p> Everything inside the div emelent with id="app" can use data from the Vue instance.</p>
+        <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({data(){return { vueClass: "pinkBG"}}})
+        app.mount('#app')
+    </script>
+</body>
+</html>
