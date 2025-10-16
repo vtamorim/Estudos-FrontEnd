@@ -11,8 +11,38 @@
       border: solid black 1px;
       display: inline-block;
     }
+
+    #app > div:nth-last-child(){
+              width: 200px;
+      padding: 20px;
+      border: dashed black 1px;
+    }
     .pinkBG {
       background-color: lightpink;
+    }
+
+    .box_verticalin { 
+        display: flex;
+        width: 50vw;
+        height: 20vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .box_horizontalin{
+        display: flex;
+        width: 10vw;
+        height: 5vh;
+        justify-content: space-around;
+    }
+    #app{
+        width: 50vw;
+        height: 50vh;
+        display: flex;
+        justify-content:center ;
+        flex-direction: column;
+        align-items: center;
     }
     </style>
 </head>
@@ -23,12 +53,40 @@
        <p> Everything inside the div emelent with id="app" can use data from the Vue instance.</p>
         <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.
         </div>
+        <div v-bind:style="{ fontSize: size + 'em', backgroundColor: relevante ? 'blue' : 'green', color: relevante ? 'white' : 'yellow'} ">
+            Comé que eu escrevo isso C  E R  T O
+        </div>
+
+        <div v-bind:class="className" >
+            <p> O</p>
+            <p> QUE</p>
+            <p> É</p>
+            <p> ISSO</p>
+        </div>
+
+        <p v-if="taounta > 10" >O ngc tá verdadeiro</p>
+        <p v-else-if="taounta > 5"> ta pouco mn</p>
+        <p v-else>tá mais n</p>
+        <div v-if="text.includes('empada')" style="display: flex; flex-direction: column; align-items: center;">
+        <p>isso tem a palavra empada</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsbx9Tcy2gya6yO7ZZygFGEB33hcBFdnNiSg&s" alt="imagem de uma empada pq sim" style="width: 5rem;">
+        </div>
+        <div v-else>
+            <p > n tem a palava empada</p>
+        </div>
+        
     </div>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
-        const app = Vue.createApp({data(){return { vueClass: "pinkBG"}}})
+        const app = Vue.createApp({data(){return {
+        vueClass: "pinkBG", 
+        size: 2, 
+        relevante:false, 
+        className:'box_horizontalin', 
+        text:'bom dia empada, eae' ,
+        taounta:6}}})
         app.mount('#app')
     </script>
 </body>
