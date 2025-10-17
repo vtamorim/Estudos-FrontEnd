@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JsDocument</title>
+    <style>
+            #app {
+      border: dashed black 1px;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    #app > button {
+      display: block;
+      margin: auto;
+    }
+
+    #lightDiv {
+      position: relative;
+      width: 150px;
+      height: 150px;
+    }
+
+    #lightDiv > img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    #lightDiv > div {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background-color: yellow;
+    }
+
+        #app > #boxcolors {
+      width: 200px;
+      height: 80px;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+          <p>Move the mouse pointer over the box below to change the background-color randomly with hsl color code.</p>
+                <div id="lightDiv">
+                    <div v-show="lightOn"></div>
+                    <img src="https://www.w3schools.com/vue/img_lightBulb.svg">
+                </div>
+                <button v-on:click=" lightOn =! lightOn ">Switch light</button>
+                <input type="text" v-on:input="inpCount++" placeholder="Escreva ae boiola">
+                <p>{{'Caracteres já digitados no total: ' + inpCount }}</p>
+
+
+  <div id="boxcolors" v-on:mousemove=" colorVal = Math.floor(Math.random()*360) " v-bind:style=" {backgroundColor: 'hsl('+colorVal+',60%,60%)'} "></div>
+  <p><span>backgroundColor: hsl(<strong>{{ colorVal }}</strong>, 80%, 80%)</span></p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    lightOn: false,
+                    inpCount:0,
+                    colorVal:50
+                }
+            }
+        })
+
+
+    app.mount('#app')
+    </script>
+</body>
+</html>
