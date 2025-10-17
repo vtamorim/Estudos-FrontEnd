@@ -44,20 +44,43 @@
         flex-direction: column;
         align-items: center;
     }
+        figure {
+      width: 80px;
+      padding: 10px;
+      margin: 10px;
+      background-color: lightskyblue;
+      border-radius: 5px;
+    }
+    div> #imgs_list_box{
+              border: solid black 1px;
+      width: 80%;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+        figcaption {
+      text-align: center;
+    }
+    
+    img {
+      width: 100%;
+      background-color: white;
+    }
     </style>
 </head>
 <body>
     <h1>Testando Vue</h1>
     <p>é pq n sei n sei oq sla oq lá pq n sei oq lá</p>
     <div id="app">
-       <p> Everything inside the div emelent with id="app" can use data from the Vue instance.</p>
-        <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.
+       <p v-show="showDiv" >  Everything inside the div emelent with id="app" can use data from the Vue instance.</p>
+        <div v-bind:class="vueClass" v-show="showDiv">This element is bound to the "pinkBG" class.
         </div>
-        <div v-bind:style="{ fontSize: size + 'em', backgroundColor: relevante ? 'blue' : 'green', color: relevante ? 'white' : 'yellow'} ">
+        <div v-show="showDiv" v-bind:style="{ fontSize: size + 'em', backgroundColor: relevante ? 'blue' : 'green', color: relevante ? 'white' : 'yellow'} ">
             Comé que eu escrevo isso C  E R  T O
         </div>
 
-        <div v-bind:class="className" >
+        <div v-show="showDiv" v-bind:class="className" >
             <p> O</p>
             <p> QUE</p>
             <p> É</p>
@@ -65,23 +88,65 @@
         </div>
 
         <p v-if="taounta > 10" >O ngc tá verdadeiro</p>
-        <p v-else-if="taounta > 5"> ta pouco mn</p>
-        <p v-else>tá mais n</p>
-        <div v-if="text.includes('empada')" style="display: flex; flex-direction: column; align-items: center;">
+        <p v-show="showDiv"  v-else-if="taounta > 5"> ta pouco mn</p>
+        <p  v-else>tá mais n</p>
+        <div v-show="showDiv"  v-if="text.includes('empada')" style="display: flex; flex-direction: column; align-items: center;">
         <p>isso tem a palavra empada</p>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsbx9Tcy2gya6yO7ZZygFGEB33hcBFdnNiSg&s" alt="imagem de uma empada pq sim" style="width: 5rem;">
         </div>
-        <div v-else>
+        <div v-else v-show="showDiv" >
             <p > n tem a palava empada</p>
         </div>
         
+        <ol>
+            <li v-show="showDiv" v-for="x in list_comidas">{{ x }}</li>
+        </ol>
+
+        <div id="imgs_list_box">
+            <figure v-for="x in imgs_comidas">
+                <img v-bind:src="x.url" style="width: 5rem;">
+                <figcaption>{{x.name}}</figcaption>
+
+                </figure>
+        </div>
+
+        <div>
+            <p>{{"Quantidade de clicks: " + count}}  </p>
+            <button v-on:click="count++">Clica ae mano</button>
+        </div>
+        
     </div>
-    
+    <!-- A diferença entre v-if e v-show é que, quando colocado como false, a box v-show ainda permanece no código, mas n é visível. Enquanto a box v-if não aparece no código, sendo ela destruida.-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
         const app = Vue.createApp({data(){return {
-        vueClass: "pinkBG", 
+            count:0,
+
+
+
+        list_comidas:[
+            'Arroz',
+            'Pão',
+            'Bolo',
+            'Frango',
+            'Pizza',
+            'Empada'
+        ],
+
+
+        imgs_comidas:[
+            { name: 'Frituras',url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHChqIU_qKqlxrNPVkOxvMrR3DZHSkSEqFPA&s'},
+            { name: 'Frutas e Legumes',url:'https://cdn-icons-png.flaticon.com/512/1147/1147934.png'},
+            { name: 'O que ngc é esse',url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Xrp0UTlfzz-Vh07_F8ADq3PDCx_IrWT2cw&s'},
+            { name: 'Sla',url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB0cegju8O_dtVZtxQ1NYNH7U90sQbkHbUNARoc9ZsxVs8G-SaJQBcK2gVsn2lIEbHNpM&usqp=CAU'}
+        ] ,
+
+
+
+
+        showDiv: false, 
+        vueClass: "pinkBG",         
         size: 2, 
         relevante:false, 
         className:'box_horizontalin', 
