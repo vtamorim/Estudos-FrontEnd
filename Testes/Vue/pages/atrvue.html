@@ -37,10 +37,24 @@
       border-radius: 50%;
       background-color: yellow;
     }
+    #app > #aparecer{
+      width: 140px;
+      height: 60px;
+      background-color: lightgreen;
+      padding: 20px;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+    }
 
         #app > #boxcolors {
       width: 200px;
       height: 80px;
+    }
+    #box_positions{
+            width: 160px;
+      height: 80px;
+      background-color: lightcoral;
+      padding: 20px;
     }
     </style>
 </head>
@@ -58,8 +72,13 @@
 
   <div id="boxcolors" v-on:mousemove=" colorVal = Math.floor(Math.random()*360) " v-bind:style=" {backgroundColor: 'hsl('+colorVal+',60%,60%)'} "></div>
   <p><span>backgroundColor: hsl(<strong>{{ colorVal }}</strong>, 80%, 80%)</span></p>
-    </div>
-
+  <div v-on:click="methodchange" id="aparecer">
+    {{ text }}
+  </div>  <br>
+  <div v-on:mousemove="displayposition" id="box_positions">
+    <span> Posição X: {{ posX }} <br> Posição Y: {{ posY }} </span>
+  </div>
+  </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
@@ -68,9 +87,21 @@
                 return{
                     lightOn: false,
                     inpCount:0,
-                    colorVal:50
-                }
+                    colorVal:50,
+                    text: '',
+                    posX : 0,
+                    posY : 0
+                  }
             }
+            ,
+            methods : { methodchange(){
+              this.text = 'feel like a monster'
+            },
+            displayposition(event){
+                this.posX = event.offsetX
+                this.posY = event.offsetY
+              }
+          }
         })
 
 
