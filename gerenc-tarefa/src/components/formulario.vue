@@ -1,6 +1,6 @@
 <template>
     <form class="demo-form" action="#" @submit.prevent>
-        <h1 class="title">Schedule a demo for our product.</h1>
+        <h1 class="title">Cadastrar Produto</h1>
 
         <div class="field">
             <label>Name</label>
@@ -13,17 +13,22 @@
         </div>
 
         <div class="field">
-            <label>Phone</label>
-            <div class="box"><input type="tel" placeholder="xxx-xxx-xxxx" /></div>
+            <label>Preço</label>
+            <div class="box"><input type="number" placeholder="Preço do produto" min="0"/></div>
         </div>
 
         <div class="field">
-            <label>Day</label>
+            <label>Categoria</label>
             <div class="box"><select>
-                <option>Which day works best..</option>
-                <option>Monday</option>
-                <option>Tuesday</option>
+                <option>Eletrônicos</option>
+                <option>Alimentos</option>
+                <option>Roupas</option>
+                <option>Outros</option>
             </select></div>
+        </div>
+        <div class="field">
+            <label>Quantidade em Estoque</label>
+            <div class="box"><input type="number" placeholder="Quantidade em estoque" min="0"/></div>
         </div>
 
         <button class="submit" type="submit">Submit</button>
@@ -90,6 +95,20 @@
     position: relative;
     z-index: 1;
 }
+.box textarea{
+    display: block;
+    width: 100%;
+    height: 60px;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    color: #fca311;
+    outline: none;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    resize: none;
+}
 .field select{
     appearance: none;
     background-image: linear-gradient(45deg, transparent 50%, #fca311 50%),
@@ -113,7 +132,6 @@
     font-weight: 700;
     cursor: pointer;
     position: relative;
-    top: 2.5rem;
     box-shadow: 0 6px 0 rgba(0,0,0,0.06);
     transition: all 0.2s ease;
 }
