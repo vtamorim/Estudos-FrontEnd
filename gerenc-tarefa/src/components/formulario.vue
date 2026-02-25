@@ -1,25 +1,74 @@
+
+<script setup>
+import { ref, onMounted } from "vue"
+import axios from "axios"
+
+const products = ref([])
+
+const form = ref({
+  name: "",
+  price: "",
+  descricao: "",
+  categoria: "",
+  quantidade: ""
+})
+
+async function loadProducts() {
+  const response = await axios.get("http://localhost:8080/products")
+  products.value = response.data
+}
+
+async function submitForm() {
+  if (!form.value.name || !form.value.price) {
+    alert("Preencha todos os campos")
+    return
+  }
+
+  await axios.post("http://localhost:8080/products", {
+    id: Date.now(),
+    name: form.value.name,
+    price: Number(form.value.price),
+    descricao: form.value.descricao,
+    categoria: form.value.categoria,
+    quantidade: Number(form.value.quantidade)
+
+})
+
+  form.value.name = ""
+  form.value.price = ""
+  form.value.descricao = ""
+  form.value.categoria = ""
+  form.value.quantidade = ""
+
+
+  loadProducts()
+}
+
+onMounted(loadProducts)
+</script>
+
 <template>
-    <form class="demo-form" action="#" @submit.prevent>
+    <form class="demo-form" action="#" @submit.prevent="submitForm">
         <h1 class="title">Cadastrar Produto</h1>
 
         <div class="field">
             <label>Name</label>
-            <div class="box"><input type="text" placeholder="John Smith" /></div>
+            <div class="box" ><input type="text" v-model="form.nome" placeholder="John Smith" /></div>
         </div>
 
         <div class="field">
             <label>Descrição</label>
-            <div class="box"><textarea rows="6" style="background-color: transparent; border: none;" type="text" placeholder="Descreva o que você precisa" /></div>
+            <div class="box" ><textarea rows="6"v-model="form.descricao" style="background-color: transparent; border: none;" type="text" placeholder="Descreva o que você precisa" /></div>
         </div>
 
         <div class="field">
             <label>Preço</label>
-            <div class="box"><input type="number" placeholder="Preço do produto" min="0"/></div>
+            <div class="box"><input type="number" v-model.number="form.preco" placeholder="Preço do produto" min="0"/></div>
         </div>
 
         <div class="field">
             <label>Categoria</label>
-            <div class="box"><select>
+            <div class="box"><select v-model="form.categoria">
                 <option>Eletrônicos</option>
                 <option>Alimentos</option>
                 <option>Roupas</option>
@@ -28,16 +77,19 @@
         </div>
         <div class="field">
             <label>Quantidade em Estoque</label>
-            <div class="box"><input type="number" placeholder="Quantidade em estoque" min="0"/></div>
+            <div class="box"><input type="number" v-model.number="form.quantidade" placeholder="Quantidade em estoque" min="0"/></div>
         </div>
 
         <button class="submit" type="submit">Submit</button>
     </form>
+    <ul>
+        <li v-for="product in products" :key="product.id">
+            {{ product.name }} - R$ {{ product.price }}
+        </li>
+    </ul>
 </template>
 
-<script setup>
 
-</script>
 
 <style scoped>
 
