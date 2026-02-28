@@ -1,7 +1,7 @@
-
 <script setup>
 import { ref, onMounted } from "vue"
 import axios from "axios"
+import { addProduct } from '../services/api.js';
 
 const products = ref([])
 
@@ -19,20 +19,9 @@ async function loadProducts() {
 }
 
 async function submitForm() {
-  if (!form.value.name || !form.value.price) {
-    alert("Preencha todos os campos")
-    return
-  }
 
-  await axios.post("http://localhost:8080/products", {
-    id: Date.now(),
-    name: form.value.name,
-    price: Number(form.value.price),
-    descricao: form.value.descricao,
-    categoria: form.value.categoria,
-    quantidade: Number(form.value.quantidade)
 
-})
+  await addProduct(form.value);
 
   form.value.name = ""
   form.value.price = ""

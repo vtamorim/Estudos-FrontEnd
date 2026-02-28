@@ -18,7 +18,16 @@
         </div>
     </section>
 </template>
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { getProducts } from '../services/api.js';
+
+const items = ref([]);
+
+onMounted(async () => {
+    items.value = await getProducts();
+});
+</script>
 <style scoped>
     section{
         background-color: #001b54;
