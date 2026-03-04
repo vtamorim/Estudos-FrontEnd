@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue"
-import axios from "axios"
-import { addProduct } from '../services/api.js';
+import { getProducts, addProduct } from "../services/api.js"
 
 const products = ref([])
 
@@ -14,35 +13,44 @@ const form = ref({
 })
 
 async function loadProducts() {
-  const response = await axios.get("http://localhost:8080/products")
-  products.value = response.data
+  try {
+    const data = await getProducts()
+    console.log("Produtos carregados:", data)
+    products.value = data
+  } catch (error) {
+    console.error("Erro ao carregar produtos:", error)
+  }
 }
 
 async function submitForm() {
+  try {
+    const response = await addProduct(form.value)
+    console.log("Resposta do POST:", response)
 
+    // limpa formulário
+    form.value = {
+      name: "",
+      price: "",
+      descricao: "",
+      categoria: "",
+      quantidade: ""
+    }
 
-  await addProduct(form.value);
-
-  form.value.name = ""
-  form.value.price = ""
-  form.value.descricao = ""
-  form.value.categoria = ""
-  form.value.quantidade = ""
-
-
-  loadProducts()
+    await loadProducts()
+  } catch (error) {
+    console.error("Erro ao cadastrar produto:", error)
+  }
 }
 
 onMounted(loadProducts)
 </script>
-
 <template>
     <form class="demo-form" action="#" @submit.prevent="submitForm">
         <h1 class="title">Cadastrar Produto</h1>
 
         <div class="field">
             <label>Name</label>
-            <div class="box" ><input type="text" v-model="form.nome" placeholder="John Smith" /></div>
+            <div class="box" ><input type="text" v-model="form.name" placeholder="John Smith" /></div>
         </div>
 
         <div class="field">
@@ -52,7 +60,7 @@ onMounted(loadProducts)
 
         <div class="field">
             <label>Preço</label>
-            <div class="box"><input type="number" v-model.number="form.preco" placeholder="Preço do produto" min="0"/></div>
+            <div class="box"><input type="number" v-model.number="form.price" placeholder="Preço do produto" min="0"/></div>
         </div>
 
         <div class="field">
@@ -72,7 +80,8 @@ onMounted(loadProducts)
         <button class="submit" type="submit">Submit</button>
     </form>
     <ul>
-        <li v-for="product in products" :key="product.id">
+        <li :key="index"
+v-for="(product, index) in products">
             {{ product.name }} - R$ {{ product.price }}
         </li>
     </ul>

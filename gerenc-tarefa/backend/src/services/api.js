@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://legendary-doodle-q79pp964rq6g244jp-8080.app.github.dev/';
 
 export async function getProducts() {
   return fetch(`${API_BASE}/products`).then(r => r.json());
