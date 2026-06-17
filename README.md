@@ -1,8 +1,8 @@
-# Projetos Pessoais de Front-End
+# Estudos Pessoais de Front-End
 
-Este repositório reúne diversos projetos pessoais desenvolvidos com o objetivo de aprimorar habilidades em front-end. Os projetos envolvem manipulação do DOM, consumo de APIs, Promises, eventos e outras técnicas modernas de desenvolvimento web.
+Este repositório reúne diversos Estudos pessoais desenvolvidos com o objetivo de aprimorar habilidades em front-end. Os Estudos envolvem manipulação do DOM, consumo de APIs, Promises, eventos e outras técnicas modernas de desenvolvimento web.
 
-## Projetos Inclusos
+## Estudos Inclusos
 - **Calculadora**
 - **Gerador de Senhas**
 - **Jokenpo (Pedra, Papel e Tesoura)**
@@ -29,12 +29,12 @@ Este repositório reúne diversos projetos pessoais desenvolvidos com o objetivo
    ```
 2. **Acesse a pasta do projeto desejado:**
    ```bash
-   cd Projetos-FrontEnd/<nome-do-projeto>
+   cd Estudos-FrontEnd/<nome-do-projeto>
    ```
 3. **Abra o arquivo `index.html` no navegador** para visualizar o projeto.
 
 ## Como Rodar o Servidor de API (json-server)
-Alguns projetos utilizam uma API fake para simular requisições HTTP. Para rodar o servidor:
+Alguns Estudos utilizam uma API fake para simular requisições HTTP. Para rodar o servidor:
 
 1. Instale o [Node.js](https://nodejs.org/) e o npm, caso ainda não tenha.
 2. Instale o json-server globalmente (opcional):
@@ -53,7 +53,7 @@ Alguns projetos utilizam uma API fake para simular requisições HTTP. Para roda
 
 ## Observações
 - Sinta-se à vontade para explorar, modificar e sugerir melhorias!
-- Estes projetos são para fins de estudo e prática.
+- Estes Estudos são para fins de estudo e prática.
 
 ---
 
