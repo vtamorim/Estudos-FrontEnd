@@ -4,6 +4,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { CollectionConfig } from 'payload'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -32,3 +33,34 @@ export default buildConfig({
   sharp,
   plugins: [],
 })
+
+
+export const Pages:CollectionConfig = {
+  slug:'pages',
+  admin:{
+    useAsTitle: 'title',
+
+  },
+  fields:[
+    {
+      name: 'title',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required : true,
+      unique : true,
+      admin : {
+        position : 'sidebar',
+      }
+
+    },
+    {
+      name:'content',
+      type:'richText',
+    }
+  ],
+
+}
