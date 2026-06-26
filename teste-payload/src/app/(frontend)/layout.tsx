@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-
+import { Sidebar } from '@/components/Sidebar'
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
@@ -12,7 +12,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="pt-br">
       <body>
-        <main>{children}</main>
+        <div style={{display : 'flex', minHeight:'100vh' }}>
+        <Sidebar/>
+        <main style={{ flex : 1, padding : '2rem'}}>{children}</main>
+       </div>
       </body>
     </html>
   )
